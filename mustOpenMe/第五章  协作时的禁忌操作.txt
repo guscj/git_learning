@@ -1,0 +1,14 @@
+笔记包含git命令git bash命令等
+
+【39】禁止向与别人协作的分支push -f
+    git push -h
+    查看git push命令可加的后缀与作用;
+    **
+    本地分支与远端分支不是fast forward关系时，是不能push的。
+    但附加-f可以强制push，会导致远端对应分支的历史演变完全被本地替代。
+【40】
+    **
+    公共分支严禁拉到本地rebase变基，即不要修改项目的历史版本。
+**
+git push -f 远端仓库名 hashcode:远端分支名
+把本地hashcode对应的commit和它的历史演进强行push到指定远端分支上;

@@ -1,0 +1,112 @@
+笔记包含git命令cmd命令等
+
+【03】最小配置
+    git config --global --list 
+    查看global设置;
+    git config --global user.name "xxx"
+    全局设置用户名，!user.name和'xxx'之间要加空格;
+    git config --global user.name
+    查看global下的user.name;
+【04】新建仓库
+    git init xx
+    创建新的由git管理的仓库xx;
+    git init
+    git接管原有仓库;
+    git add xx
+    把xx加入暂存区;
+    git status
+    查看工作目录和暂存区状态;
+    git commit -m"xxx"
+    提交暂存区内容到当前分支,-m里是提交理由;
+    git commit -am"xxx"
+    提交工作区内容到当前分支,-m里是提交理由;
+    git log
+    查看git日志;
+    copy "..\0-material\readme"
+    win系统拷贝文件不加双引号命令语法不正确，斜杠方向错误系统找不到指定文件;
+【05】暂存区和工作区
+    git add -u
+    把工作区中已被git管理的文件全部提交到暂存区;
+    cls
+    清屏;
+    dir
+    显示文件夹内的内容;
+    more filename
+    显示文件内容;
+    xcopy "..\0-material\images" ".\images" /s /e
+    复制原文件夹内的内容，放入新建同名文件夹;
+    mkdir xx
+    在当前目录创建文件夹;
+    **
+    工作目录-(add)->暂存区-(commit)->版本历史。
+    https://www.jianshu.com/p/fba13c5bbf83，配置调用编辑器功能。
+【06】文件重命名
+    rename readme readme.md
+    在工作区把readme文件重命名为readme.md;
+    git rm readme
+    把readme从暂存区移除;
+    git reset --hard
+    清除暂存区，工作目录中的所有变更;
+    git mv readme readme.md
+    !用git更改文件名(git提供的改名简便方法，直接在暂存区内改变);
+【07】git log版本管理的几种用法
+    git log
+    当前分支演进历史;
+    git log --all
+    所有分支演进历史;
+    git log --all --graph
+    图形化的整体演进树;
+    git log --oneline
+    简洁版日志，显示版本hash和提交时-m中的备注信息;
+    git log temp
+    temp分支的演进历史;
+    git log --all --graph --oneline
+    !所有图形化的简版演进历史;
+    git log -n4
+    当前分支最近4条日志;
+    git log -n4 --oneline
+    前两种的组合写法;
+    git branch -v
+    查看本地有多少分支;
+    git branch -av
+    查看本地和远端所有的分支;
+    git checkout -b temp hash标识值
+    从旧版本上建新分支temp，并进入新分支;
+    git commit -am"xxx"
+    把工作区的更改直接提交到版本历史库;
+    git help --web log
+    浏览器查看git log相关帮助;
+【08】gitk图形界面的版本管理
+    gitk
+    进入图形化版本管理工具;
+    gitk --all
+    进入图形化版本管理工具，显示所有分支;
+【09】.git目录下
+    git checkout master
+    切换到master分支;
+    git cat-file -t hash标识值
+    查看hash指向的文件的类型;
+    git cat-file -p hash标识值
+    查看hash指向的文件的内容;
+    **
+    HEAD文件 内容是一个引用，指向当前使用分支的最新一次commit或某个不在分支内的commit(分离头指针状态)。
+    config文件 存放与此仓库相关的配置信息,即local信息。
+    refs文件夹 包含heads(分支们,存放了每个分支最新的commit的hash标识值)和tags(可当里程碑用：v1.0)。
+    objects文件夹 存放commit，tree，blob。(放入暂存区时就会存进来)
+【10】git中的三个对象
+    commit包含了commit提交时产生的信息(parent author和-m中的信息)和工作目录中除了.git文件夹的快照(唯一一个tree)。
+    tree包含除了.git外的所有文件和文件夹，tree中包含tree，tree就是文件夹。
+    blob即文件。
+    三种对象都会有对应的hash值。
+    在git中，相同内容的文件就算文件名不同，仍然对应同一个blob。
+【12】分离头指针(detached HEAD)
+    git checkout hash标识值
+    基于hash标识值代表的版本进入分离头指针状态;
+    **
+    进入分离头指针状态后，做一些尝试性变更，切换到别的分支后，这些变更不会被保存。
+    没有和分支或tag挂钩的分离头指针会被git认为不重要，会被清除。
+【13】HEAD和branch
+    git diff hash标识值1 hash标识值2
+    比较两个commit之间的差异;
+    git diff HEAD HEAD~1
+    当前HEAD指向的commit和它的父commit之间的差异;

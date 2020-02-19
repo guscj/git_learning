@@ -1,0 +1,20 @@
+笔记包含git命令git bash命令等
+
+【33】本地仓库同步到github
+    git remote -v 
+    查看与本地协作的远端仓库信息;
+    git remote add 给远端仓库起的名字 复制ssh 
+    添加ssh对应的远端仓库;
+    git fetch github master
+    把远端仓库github的master分支fetch下来，会形成一颗独立的tree;
+    git merge -h 
+    查看merge命令的帮助信息;
+    git merge --allow-unrelated-histories githup/master 
+    把fetch下来的master分支和本地当前分支master合并(两分支不是父子关系，所以合并需要添加 --allow-unrelated-histories);
+    git push github --all
+    把当前本地仓库push到远端仓库github;
+    git push github master
+    把当前本地仓库的master分支push到远端仓库github的master分支;
+**
+git bash的指令和mac终端相同。
+-x多为操作性质指令，--x多为描述性质指令。
