@@ -9,7 +9,7 @@
     把远端仓库github的master分支fetch下来，会形成一颗独立的tree;
     git merge -h 
     查看merge命令的帮助信息;
-    git merge --allow-unrelated-histories githup/master 
+    git merge --allow-unrelated-histories github/master 
     把fetch下来的master分支和本地当前分支master合并(两分支不是父子关系，所以合并需要添加 --allow-unrelated-histories);
     git push github --all
     把当前本地仓库push到远端仓库github;
